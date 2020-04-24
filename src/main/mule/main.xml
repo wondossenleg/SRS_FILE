@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<import doc:name="Import" doc:id="ca7ae317-bb27-4358-bba6-ef82b8c76e16" file="templets.xml" />
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="a67583c2-c122-401e-a4a0-742d084490b8" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="mainFlow" doc:id="c375ba86-3aa8-4cfc-b7c8-0ea6d899757f" >
+		<http:listener doc:name="Listener" doc:id="7b531d67-7616-49e0-be20-181368a2955f" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="f1f02684-7a94-464d-ae4e-b9a8fc9b4136" />
+	</flow>
+</mule>
